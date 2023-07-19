@@ -26,6 +26,7 @@ const getOneUrl = (req, res) => {
 };
 
 const createNewUrl = (req, res) => {
+    console.log(req.body);
     const nombre = req.body.nombre;
     const url = req.body.url;
     const urlEncriptada = encriptarURL(url);
