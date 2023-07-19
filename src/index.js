@@ -1,6 +1,8 @@
 const express = require("express");
-const urlRoutes = require("./v1/routes/urlRoutes")
+const urlRoutes = require("./v1/routes/urlRoutes");
+const db = require("./database/db")
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 
