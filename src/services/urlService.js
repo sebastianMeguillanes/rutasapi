@@ -25,6 +25,7 @@ const getOneUrl = (urlId, callback) => {
 // Crear una nueva URL
 const createNewUrl = (urlData, callback) => {
   db.url.insert(urlData, (err, newDoc) => {
+    console.log(urlData);
     if (err) {
       console.error(err);
       return callback('Error al crear la URL', null);

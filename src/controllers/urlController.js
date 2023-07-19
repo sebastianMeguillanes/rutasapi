@@ -37,7 +37,7 @@ const createNewUrl = (req, res) => {
         url_encriptada: urlEncriptada,
         fecha: fechaActual
     };
-
+    console.log(nuevoDato);
     urlService.createNewUrl(nuevoDato, (error, newUrl) => {
         if (error) {
             console.error(error);
