@@ -1,10 +1,16 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const urlRoutes = require("./v1/routes/urlRoutes");
-const db = require("./database/db")
+const db = require("./database/db");
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
+// Configurar body-parser para procesar datos del cuerpo de la solicitud
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Resto del código de tu archivo 'index.js' ...
 
 db.url.loadDatabase((err) => {
     if (err) {
