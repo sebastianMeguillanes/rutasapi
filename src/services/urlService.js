@@ -1,7 +1,7 @@
 const db = require('../database/db');
 
 // Obtener todas las URLs
-const getAllUrls = (callback) => {
+const getAll = (callback) => {
   db.url.find({}, { nombre: 1, url: 1, fecha: 1 }, (err, docs) => {
     if (err) {
       console.error(err);
@@ -12,7 +12,7 @@ const getAllUrls = (callback) => {
 };
 
 // Obtener una URL por su ID
-const getOneUrl = (urlId, callback) => {
+const getOne = (urlId, callback) => {
   db.url.findOne({ _id: urlId }, (err, doc) => {
     if (err) {
       console.error(err);
@@ -23,7 +23,7 @@ const getOneUrl = (urlId, callback) => {
 };
 
 // Crear una nueva URL
-const createNewUrl = (urlData, callback) => {
+const createNew = (urlData, callback) => {
   db.url.insert(urlData, (err, newDoc) => {
     console.log(urlData);
     if (err) {
@@ -35,7 +35,7 @@ const createNewUrl = (urlData, callback) => {
 };
 
 // Actualizar una URL por su ID
-const updateOneUrl = (urlId, urlData, callback) => {
+const updateOne = (urlId, urlData, callback) => {
   db.url.update({ _id: urlId }, { $set: urlData }, {}, (err, numReplaced) => {
     if (err) {
       console.error(err);
@@ -46,7 +46,7 @@ const updateOneUrl = (urlId, urlData, callback) => {
 };
 
 // Eliminar una URL por su ID
-const deleteOneUrl = (urlId, callback) => {
+const deleteOne = (urlId, callback) => {
   db.url.remove({ _id: urlId }, {}, (err, numRemoved) => {
     if (err) {
       console.error(err);
@@ -58,9 +58,9 @@ const deleteOneUrl = (urlId, callback) => {
 
 // Exportar las funciones del servicio
 module.exports = {
-  getAllUrls,
-  getOneUrl,
-  createNewUrl,
-  updateOneUrl,
-  deleteOneUrl
+  getAll,
+  getOne,
+  createNew,
+  updateOne,
+  deleteOne
 };

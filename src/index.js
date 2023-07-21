@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const urlRoutes = require("./v1/routes/urlRoutes");
+const versionRoutes = require("./v1/routes/versionRoutes");
 const db = require("./database/db");
 const app = express();
 const cors = require('cors');
@@ -22,13 +23,11 @@ db.url.loadDatabase((err) => {
     }
   });
 
-  
 function startServer() {
     app.use("/api/v1/url", urlRoutes);
-
+    app.use("/api/v1/version", versionRoutes);
     
     app.listen(PORT ,() =>{
         console.log("Server listen en el puerto",PORT)
     }); 
 }
- 

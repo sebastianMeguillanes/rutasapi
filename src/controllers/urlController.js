@@ -3,7 +3,7 @@ const moment =  require("moment");
 const { encriptarURL } = require('./criptoController');
 
 const getAllUrls = (req, res) => {
-    urlService.getAllUrls((error, allUrls) => {
+    urlService.getAll((error, allUrls) => {
         if (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al obtener las URLs' });
@@ -14,8 +14,8 @@ const getAllUrls = (req, res) => {
 };
 
 const getOneUrl = (req, res) => {
-    const urlId = req.params.urlId;
-    urlService.getOneUrl(urlId, (error, oneUrl) => {
+    const urlId = req.params.Id;
+    urlService.getOne(urlId, (error, oneUrl) => {
         if (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al obtener la URL' });
@@ -26,7 +26,7 @@ const getOneUrl = (req, res) => {
 };
 
 const createNewUrl = (req, res) => {
-    console.log(req.body);
+    
     const nombre = req.body.nombre;
     const url = req.body.url;
     const urlEncriptada = encriptarURL(url);
@@ -38,8 +38,7 @@ const createNewUrl = (req, res) => {
         url_encriptada: urlEncriptada,
         fecha: fechaActual
     };
-    console.log(nuevoDato);
-    urlService.createNewUrl(nuevoDato, (error, newUrl) => {
+    urlService.createNew(nuevoDato, (error, newUrl) => {
         if (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al crear la URL' });
@@ -50,10 +49,14 @@ const createNewUrl = (req, res) => {
 };
 
 const updateOneUrl = (req, res) => {
-    const urlId = req.params.urlId;
-    const urlData = req.body;
-
-    urlService.updateOneUrl(urlId, urlData, (error, numReplaced) => {
+    const urlId = req.params.Id;
+    const urlData = {
+        nombre: req.body.nombre,
+        url: req.body.url,
+        url_encriptada: encriptarURL(req.body.url),
+        fecha: moment().format('DD/MM/YYYY')
+    };
+    urlService.updateOne(urlId, urlData, (error, numReplaced) => {
         if (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al actualizar la URL' });
@@ -64,8 +67,8 @@ const updateOneUrl = (req, res) => {
 };
 
 const deleteOneUrl = (req, res) => {
-    const urlId = req.params.urlId;
-    urlService.deleteOneUrl(urlId, (error, numRemoved) => {
+    const urlId = req.params.Id;
+    urlService.deleteOne(urlId, (error, numRemoved) => {
         if (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al eliminar la URL' });
