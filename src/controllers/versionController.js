@@ -45,8 +45,7 @@ const updateOneVersion = (req, res) => {
     const Id = req.params.Id;
     const VersionData = {
         nombre: req.body.nombre,
-        url: req.body.version,
-        url_encriptada: encriptarURL(req.body.url),
+        version: req.body.version,
         fecha: moment().format('DD/MM/YYYY')
     };
     versionService.updateOne(Id, VersionData, (error, numReplaced) => {
