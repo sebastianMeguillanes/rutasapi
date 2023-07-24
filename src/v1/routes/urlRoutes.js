@@ -9,3 +9,4 @@ router
     .delete("/:Id",urlController.deleteOneUrl );   
     
 module.exports = router;
+//datos estadisticos que se puedan recibir de un dispositivo mobil

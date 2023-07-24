@@ -1,6 +1,6 @@
 const urlService = require("../services/urlService");
 const moment =  require("moment");
-const { encriptarURL } = require('./criptoController');
+const { encriptarURL } = require('../services/criptoService');
 
 const getAllUrls = (req, res) => {
     urlService.getAll((error, allUrls) => {
