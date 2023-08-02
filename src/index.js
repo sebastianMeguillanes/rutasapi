@@ -13,8 +13,9 @@ const PORT = process.env.PORT || 3000;
 // Configurar body-parser para procesar datos del cuerpo de la solicitud
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
-// Resto del código de tu archivo 'index.js' ...
+
 db.url.loadDatabase((err) => {
     if (err) {
       console.error('Error al cargar la base de datos:', err);
@@ -26,7 +27,7 @@ db.url.loadDatabase((err) => {
   });
 
 function startServer() {
-    app.use("/api/v1/", openroutes);
+    app.use("/api/v1", openroutes);
     app.use("/api/v1/url", seguridad.authMiddleware, urlRoutes);
     app.use("/api/v1/version",seguridad.authMiddleware, versionRoutes);
     
