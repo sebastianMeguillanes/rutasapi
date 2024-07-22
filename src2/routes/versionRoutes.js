@@ -4,7 +4,7 @@ const versionController = require('../controllers/versionController');
 const router = express.Router();
 
 
-router.get('/lastest', versionController.getAllVersions); 
+router.get('/lastest', versionController.getLatestVersion); 
 router.get('/', versionController.getAllVersions);
 router.post('/', versionController.createNewVersion);
 router.put('/:id', versionController.updateVersion);   
