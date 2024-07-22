@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const guard = require('./utils/authMiddleware');
+const path = require('node:path'); 
 
 const app = express();
 app.use(cors());
@@ -12,13 +13,9 @@ const versionRoutes = require('./routes/versionRoutes');
 
 
 app.use('/api/auth', authRoutes);
-app.use('/api/urls',guard.authMiddleware, urlRoutes);
-app.use('/api/versions',guard.authMiddleware, versionRoutes);   
-app.use('/loaderio-b9fcbe9ac99c68d1f3215e762115ff34', (req, res) => {
+app.use('/api/urls', urlRoutes);
+app.use('/api/versions', versionRoutes);   
 
-    //res.sendFile(path.join(__dirname, 'loaderio-b9fcbe9ac99c68d1f3215e762115ff34.txt'));
-    res.status(200).json( "loaderio-b9fcbe9ac99c68d1f3215e762115ff34" );
-});
 
 
 module.exports = app;
