@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const guard = require('./utils/authMiddleware');
-const path = require('node:path'); 
 
 const app = express();
 app.use(cors());
