@@ -17,7 +17,7 @@ app.use('/api/versions',guard.authMiddleware, versionRoutes);
 app.use('/loaderio-b9fcbe9ac99c68d1f3215e762115ff34', (req, res) => {
 
     //res.sendFile(path.join(__dirname, 'loaderio-b9fcbe9ac99c68d1f3215e762115ff34.txt'));
-    res.status(200).json({ mensaje : "mio" });
+    res.status(200).json({ token : "loaderio-b9fcbe9ac99c68d1f3215e762115ff34" });
 });
 
 
