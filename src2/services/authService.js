@@ -31,7 +31,6 @@ const validateAuthToken = (token) => {
 
 const createSession = async (user) => {
   const token = await generateAuthToken(user);
-
   return { token };
 };
 

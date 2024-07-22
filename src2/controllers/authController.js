@@ -10,8 +10,8 @@ async function loginHandler(req, res) {
 
     const user = await authService.authenticateUser(id, password);
     if (user) {
-        const session = await authService.createSession(user);
-        res.status(200).json({ session });
+        const token = await authService.createSession(user);
+        res.status(200).json( token );
     }
    
   } catch (error) {
