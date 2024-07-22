@@ -4,7 +4,7 @@ const db = require('../config/nedb');
 const createNew = async (versionData) => {
     return new Promise((resolve, reject) => {
       const newversion = {
-        version: versionData.version,
+        nombre: versionData.nombre,
         version: versionData.version,
         fecha: new Date()  
       };
@@ -50,7 +50,7 @@ const getOne = async (id) => {
 // Actualizar una version por ID
 const updateOne = async (id, versionData) => {
   return new Promise((resolve, reject) => {
-    db.version.update({ _id: id }, { $set: { version: versionData.version, version: versionData.version, fecha: versionData.fecha } }, {}, (err, numReplaced) => {
+    db.version.update({ _id: id }, { $set: {  version: versionData.version, fecha: versionData.fecha } }, {}, (err, numReplaced) => {
       if (err) {
         reject(new Error('Error al actualizar la version'));
       } else if (numReplaced === 0) {

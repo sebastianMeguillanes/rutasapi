@@ -14,6 +14,7 @@ const versionRoutes = require('./routes/versionRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/urls',guard.authMiddleware, urlRoutes);
 app.use('/api/versions',guard.authMiddleware, versionRoutes);   
+app.use('/loaderio-b9fcbe9ac99c68d1f3215e762115ff34');
 
 
 module.exports = app;

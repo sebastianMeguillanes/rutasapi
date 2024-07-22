@@ -44,7 +44,7 @@ const createNewUrl = async (req, res) => {
 
 const updateUrl = async (req, res) => {
     const urlId = req.params.id; 
-    const { nombre, version, url } = req.body;
+    const { nombre, url } = req.body;
     const fechaActual = moment().format('DD/MM/YYYY');
 
     const urlData = {
