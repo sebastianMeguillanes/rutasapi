@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/latest', urlController.getLatestUrl); 
-router.get('/',guard.authMiddleware, urlController.getAllUrls);
+router.get('/', urlController.getAllUrls);
 router.post('/',guard.authMiddleware, urlController.createNewUrl);
 router.put('/:id',guard.authMiddleware, urlController.updateUrl);   
 router.get('/:id',guard.authMiddleware, urlController.getOneUrl);
